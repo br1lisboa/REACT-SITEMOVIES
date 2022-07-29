@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import swAlert from 'sweetalert2';
 
 function Login() {
+
+  const uNavigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -50,11 +53,12 @@ function Login() {
         })
         const tokenRecibido = res.data.token;
         localStorage.setItem('token', tokenRecibido); // Localstorage recibe 2 argumentos, el nombre bajo el cual se guarda, y los datos que se recibe
+        uNavigate('/listado')
       })
-  }
-
-  return (
-    <>
+    }
+    
+    return (
+      <>
       <h2>Formulario de login</h2>
       <form onSubmit={submitHandler}>
         <label>
