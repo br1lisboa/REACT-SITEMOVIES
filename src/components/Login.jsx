@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import swAlert from 'sweetalert2';
 
 function Login() {
@@ -55,28 +55,33 @@ function Login() {
         localStorage.setItem('token', tokenRecibido); // Localstorage recibe 2 argumentos, el nombre bajo el cual se guarda, y los datos que se recibe
         uNavigate('/listado')
       })
-    }
-    
-    return (
-      <>
-      <h2>Formulario de login</h2>
-      <form onSubmit={submitHandler}>
-        <label>
-          <span>Correo electronico</span>
-          <br />
-          <input type="text" name="email" />
-          <br />
-          <br />
-        </label>
-        <label>
-          <span>Contraseña</span>
-          <br />
-          <input type="password" name="password" />
-          <br />
-          <br />
-        </label>
-        <button type="submit">Ingresar</button>
-      </form>
+  }
+
+  let token = localStorage.getItem('token');
+
+  return (
+    <>
+      {token && <Navigate to='/listado' />}
+      <div className='bg-slate-300 h-screen flex flex-col justify-center items-center'>
+        <h2 className='text-4xl w-full flex align-middle justify-center py-8'>Formulario de login</h2>
+        <form onSubmit={submitHandler} className='w-full flex flex-col items-center justify-center py-3'>
+          <label>
+            <span>Correo electronico</span>
+            <br />
+            <input type="text" name="email" />
+            <br />
+            <br />
+          </label>
+          <label>
+            <span>Contraseña</span>
+            <br />
+            <input type="password" name="password" />
+            <br />
+            <br />
+          </label>
+          <button type="submit">Ingresar</button>
+        </form>
+      </div>
     </>
   );
 }
