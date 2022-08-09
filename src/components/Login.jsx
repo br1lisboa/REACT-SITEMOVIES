@@ -12,7 +12,7 @@ function Login() {
     const password = e.target.password.value;
 
     const regexEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-    console.log(regexEmail.test(email));
+    //console.log(regexEmail.test(email));
 
     if (email === '' || password === '') {
       swAlert.fire({
@@ -52,12 +52,12 @@ function Login() {
           confirmButtonText: 'Ok'
         })
         const tokenRecibido = res.data.token;
-        localStorage.setItem('token', tokenRecibido); // Localstorage recibe 2 argumentos, el nombre bajo el cual se guarda, y los datos que se recibe
+        sessionStorage.setItem('token', tokenRecibido); // Localstorage recibe 2 argumentos, el nombre bajo el cual se guarda, y los datos que se recibe
         uNavigate('/listado')
       })
   }
 
-  let token = localStorage.getItem('token');
+  let token = sessionStorage.getItem('token');
 
   return (
     <>
