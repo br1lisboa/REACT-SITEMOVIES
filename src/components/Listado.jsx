@@ -38,14 +38,16 @@ function Listado() {
         {
           movieList.map((oneMovie, indx) => {
             return (
-              <div className='flex items-start justify-around py-4 px-4 mx-4 my-4 bg-white' key={indx}>
+              <div className='relative flex items-start justify-around py-4 px-4 mx-4 my-4 bg-white' key={indx}>
                 <div className='h-full w-80 flex flex-col justify-around'>
+                  <button className='btn-fav'>
+                    🖤
+                  </button>
                   <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} alt="" className='h-full w-full' />
                   <div className='flex flex-col justify-center items-center'>
                     <h3 className='text-xl font-bold'>{oneMovie.title}</h3>
                     <p className='text-justify mx-2 my-2 px-2 py-2'>{oneMovie.overview}</p>
-                    <button><Link to={`/detalle?movieID=${oneMovie.id}`} className='bg-black text-white mx-2 my-2 py-2 px-2 cursor-pointer'>View detail</Link></button>
-                  </div>
+                    <Link to={`/detalle?movieID=${oneMovie.id}`} className='bg-black text-white mx-2 my-2 py-2 px-2 cursor-pointer'>View detail</Link>             </div>
                 </div>
               </div>
             )

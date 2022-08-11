@@ -35,14 +35,13 @@ const Detalle = () => {
     //console.log(movieDetail);
 
     return (
-
-        <div className='h-full'>
+        <div className='h-full w-full'>
             {!token && <Navigate to='/' replace='false' />}
             {!movieDetail && <p>Cargando...</p>}
             {movieDetail &&
                 <>
                     <h3 className='w-full text-center p-5 text-xl'>Detalles de la pelicula</h3>
-                    <div className='w-full h-screen flex items-center justify-around'>
+                    <div className='w-10/12 h-screen flex items-center justify-around mx-8'>
                         <div className='w-full h-full flex items-center justify-center p-2'>
                             <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`} alt="" className='w-full h-full' />
                         </div>
